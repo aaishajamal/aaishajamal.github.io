@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WACC Calculator</title>
+    <link rel="stylesheet" href="waccstyles.css">
+</head>
+<body>
+    <div class="container">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <h1>WACC Calculator</h1>
+
+        <!-- Cost of Debt Calculator -->
+        <form id="cost-debt-form">
+            <label for="rd">Pre-Tax Cost of Debt (Rd) %:</label>
+            <input type="number" id="rd" step="0.01" required>
+            <label for="tax">Tax Rate (T) %:</label>
+            <input type="number" id="tax" step="0.01" required>
+            <button type="button" onclick="calculateCostOfDebt()">Calculate Cost of Debt</button>
+            <div id="result-cost-debt" class="result">After-Tax Cost of Debt (Kd): <span id="cost-debt-result">0.00</span>%</div>
+        </form>
+
+      
+        <!-- WACC Calculator -->
+        <form id="wacc-form">
+            <label for="equity">Equity (E):</label>
+            <input type="number" id="equity" step="0.01" required>
+            <label for="debt">Debt (D):</label>
+            <input type="number" id="debt" step="0.01" required>
+            <label for="ke">Cost of Equity (Ke) %:</label>
+            <input type="number" id="ke" step="0.01" required>
+            <label for="kd">After-Tax Cost of Debt (Kd) %:</label>
+            <input type="number" id="kd" step="0.01" required>
+            <button type="button" onclick="calculateWACC()">Calculate WACC</button>
+            <div id="result-wacc" class="result">WACC: <span id="wacc-result">0.00</span>%</div>
+        </form>
+    </div>
+
+    <script src="waccscript.js"></script>
+</body>
+</html>
