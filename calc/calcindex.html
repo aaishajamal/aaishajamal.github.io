@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dividend Growth Model Calculators</title>
+    <link rel="stylesheet" href="calcstyles.css">
+</head>
+<body>
+    <div class="container">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <h1>Dividend Growth Model Calculators</h1>
+
+        <!-- D1 Calculator -->
+        <form id="d1-form">
+            <h2>Calculate D1 </h2>
+            <label for="d0">Current Dividend (D0):</label>
+            <input type="number" id="d0" step="0.01" required>
+            <label for="growth-rate-d1">Growth Rate (g) %:</label>
+            <input type="number" id="growth-rate-d1" step="0.01" required>
+            <button type="button" onclick="calculateD1()">Calculate D1</button>
+            <div id="result-d1" class="result">Next Year's Dividend (D1): <span id="d1-result">0.00</span></div>
+        </form>
+
+        <!-- Gordon Growth Model Calculator -->
+        <form id="gordon-form">
+            <h2>Gordon Growth Model</h2>
+            <label for="d1-gordon">Next Year's Dividend (D1):</label>
+            <input type="number" id="d1-gordon" step="0.01" required>
+            <label for="ke-gordon">Required Rate of Return (Ke) %:</label>
+            <input type="number" id="ke-gordon" step="0.01" required>
+            <label for="growth-rate-gordon">Growth Rate (g) %:</label>
+            <input type="number" id="growth-rate-gordon" step="0.01" required>
+            <button type="button" onclick="calculateGordonGrowth()">Calculate Stock Price</button>
+            <div id="result-gordon" class="result">Stock Price (P0): <span id="gordon-result">0.00</span></div>
+        </form>
+    </div>
+
+    <script src="calcscript.js"></script>
+</body>
+</html>
