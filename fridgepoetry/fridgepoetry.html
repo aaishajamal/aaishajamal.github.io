@@ -1,1 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Digital Fridge Poetry</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f2f2f2;
+    }
+    #word-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 20px;
+    }
+    .word-tile {
+      background: white;
+      border: 1px solid #ccc;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: grab;
+      user-select: none;
+    }
+    #poem {
+      margin-top: 20px;
+      min-height: 100px;
+      border: 2px dashed #888;
+      padding: 20px;
+      background: #fff;
+    }
+  </style>
+</head>
+<body>
+  <h1>Digital Fridge Poetry</h1>
+  <p>Drag words into the poem box to create your poem:</p>
+  
+  <div id="word-container"></div>
+  <div id="poem" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+  <script>
+    async function loadWords() {
+      let res = await fetch("/daily-tiles"); // same domain as backend
+      let words = await res.json();
+      let container = document.getElementById("word-container");
+      container.innerHTML = "";
+      words.forEach((word, idx) => {
+        let tile = document.createElement("div");
+        tile.className = "word-tile";
+        tile.textContent = word;
+        tile.draggable = true;
+        tile.id = "tile-" + idx;
+        tile.ondragstart = drag;
+        container.appendChild(tile);
+      });
+    }
+
+    function allowDrop(ev) {
+      ev.preventDefault();
+    }
+
+    function drag(ev) {
+      ev.dataTransfer.setData("text", ev.target.id);
+    }
+
+    function drop(ev) {
+      ev.preventDefault();
+      let data = ev.dataTransfer.getData("text");
+      let nodeCopy = document.getElementById(data).cloneNode(true);
+      nodeCopy.id = "copy-" + data + "-" + Date.now();
+      ev.target.appendChild(nodeCopy);
+    }
+
+    loadWords();
+  </script>
+</body>
+</html>
 
