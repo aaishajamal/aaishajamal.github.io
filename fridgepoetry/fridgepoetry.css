@@ -1,0 +1,83 @@
+/* fridgepoetry.css - simple aesthetic */
+:root{
+  --bg:#f6f7f9;
+  --card:#ffffff;
+  --accent:#2b6cb0;
+  --tile-bg:#fffbe6;
+  --tile-border:#e2d8b6;
+  --muted:#666;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0; font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial; background:var(--bg); color:#111;
+}
+header{
+  display:flex; align-items:center; gap:12px; padding:12px 18px;
+  background:linear-gradient(90deg,#fff,#f2f7ff);
+  border-bottom:1px solid #e6eefc;
+}
+header h1{margin:0; font-size:20px}
+#meta{color:var(--muted); font-size:13px}
+#shuffleBtn{margin-left:auto; padding:8px 12px; border-radius:8px; background:var(--accent); color:#fff; border:none}
+
+main{display:flex; gap:18px; padding:18px}
+.panel{flex:1; background:var(--card); padding:12px; border-radius:12px; box-shadow:0 4px 16px rgba(8,20,40,0.04)}
+.panel h2{margin:0 0 8px 0; font-size:16px}
+
+/* Word Bank */
+.tile-container{
+  min-height:120px; padding:10px; border-radius:8px; background:linear-gradient(180deg,#fbfbfb,#fff);
+  display:flex; flex-wrap:wrap; gap:8px; align-content:flex-start; border:1px dashed #eee; overflow:auto;
+}
+.tile{
+  display:inline-flex; align-items:center; justify-content:center;
+  padding:8px 10px; background:var(--tile-bg); border:1px solid var(--tile-border);
+  border-radius:8px; cursor:grab; user-select:none; font-weight:600; font-size:14px;
+  min-width:48px; text-align:center;
+  box-shadow:0 2px 6px rgba(10,10,10,0.06);
+}
+.tile.dragging{opacity:0.5; transform:scale(.98)}
+.tile.suffix{background:#fff0f6}
+.tile.pronoun{background:#f0fff6}
+.tile.preposition{background:#f0f7ff}
+.tile.conjunction{background:#fff7f0}
+
+/* Poem area lines and slots */
+.poem-area{display:flex; flex-direction:column; gap:8px; padding:6px; border-radius:8px}
+.line {
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;             /* match Word Bank spacing */
+  min-height:46px;
+  padding:4px 0;
+}
+
+.slot {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:36px;
+  min-width:48px;      /* match tile min width */
+  border-radius:6px;
+  background:transparent;
+  border:1px dashed transparent;
+}
+
+.slot.empty { background:rgba(255,255,255,0.6) }
+.slot.occupied { background:transparent }
+.slot.highlight { border-color:var(--accent); background:rgba(40,116,240,0.04) }
+
+.slot.empty{background:rgba(255,255,255,0.6)}
+.slot.occupied{background:transparent}
+.slot.highlight{border-color:var(--accent); background:rgba(40,116,240,0.04)}
+
+/* Controls */
+.controls{margin-top:8px; display:flex; gap:8px}
+button{padding:8px 10px; border-radius:8px; border:1px solid #ddd; background:#fff; cursor:pointer}
+
+textarea{width:100%; margin-top:8px; border-radius:8px; padding:8px; border:1px solid #ddd; resize:vertical}
+
+@media (max-width:900px){
+  main{flex-direction:column}
+}
